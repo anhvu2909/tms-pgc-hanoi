@@ -1,0 +1,283 @@
+{
+  "components": {
+    "calendar": {
+      "more": "xem thêm"
+    },
+    "datatable": {
+      "pleaseEnterValueToSearch": "Tìm kiếm",
+      "reset": "Cài lại",
+      "search": "Tìm kiếm",
+      "areYouSureWant": "Bạn có chắc muốn xóa?",
+      "areYouSureWantDisable": "Bạn có chắc muốn vô hiệu hóa?",
+      "areYouSureWantEnable": "Bạn có chắc chắn muốn kích hoạt?",
+      "Disabled": "Đã vô hiệu hóa",
+      "Enabled": "Đã kích hoạt",
+      "cancel": "Huỷ bỏ",
+      "ok": "Đồng ý",
+      "No Data": "Trống"
+    },
+    "form": {
+      "ruleRequired": "Hãy nhập thông tin cho trường {{title}}",
+      "ruleRequiredSelect": "Hãy chọn thông tin cho trường {{title}}",
+      "ruleEmail": "Xin vui lòng nhập địa chỉ email hợp lệ!",
+      "ruleUsername": "Tên người dùng không chứa các ký tự đặc biệt, chỉ bao gồm chữ cái và chữ số!",
+      "ruleMinLength": "Xin vui lòng nhập tối thiểu {{min}} ký tự!",
+      "ruleMaxLength": "Xin vui lòng nhập tối đa phải có {{max}} ký tự!",
+      "ruleMinNumberLength": "Xin vui lòng nhập tối thiểu {{min}} ký tự!",
+      "ruleMaxNumberLength": "Xin vui lòng nhập tối đa {{max}} ký tự!",
+      "ruleMin": "Xin vui lòng nhập số {{min}} tối thiểu!",
+      "ruleMax": "Xin vui lòng nhập số {{max}} đối đa!",
+      "ruleMaxSize": "Bạn chỉ có thể tải lên tối đa {{max}}mb!",
+      "only text": "Xin vui lòng nhập chỉ nhập chữ!",
+      "only number": "Xin vui lòng chỉ nhập số",
+      "rulePassword": "Mật khẩu yêu cầu có 8 ký tự trở lên, có ít nhất 1 chữ hoa, 1 chữ thường, 1 chữ số và 1 kí tự đặc biệt",
+      "rulePhone": "Số điện thoại không hợp lệ",
+      "confirm": "Xác nhận",
+      "ruleConfirmPassword": "Hai mật khẩu bạn nhập không nhất quán!",
+      "incorrectPathFormat": "Định dạng đường dẫn không đúng",
+      "Enter": "Nhập",
+      "Choose": "Chọn",
+      "Upload": "Tải lên",
+      "modal": {
+        "save": "Lưu lại",
+        "cancel": "Huỷ bỏ"
+      },
+      "Select Date": "Chọn ngày"
+    },
+    "message": {
+      "Success": "Thành công",
+      "Warning": "Thông báo",
+      "Fail": "Thất bại",
+      "Close": "Đóng",
+      "Ok": "Đồng ý"
+    },
+    "button": {
+      "New": "Tạo mới",
+      "Save and Add new": "Lưu và tạo mới",
+      "Back": "Quay lại"
+    }
+  },
+  "titles": {
+    "Login": "Đăng nhập",
+    "Dashboard": "Tra cứu dữ liệu",
+    "User": "Người dùng",
+    "User/List": "Danh sách",
+    "User/Add": "Tạo mới",
+    "MyProfile": "Thông tin cá nhân",
+    "Setting": "Thiết lập",
+    "Code": "Danh mục",
+    "Data": "Dữ liệu",
+    "Post": "Post",
+    "Parameter": "Tham số",
+    "Navigation": "Phân quyền điều hướng",
+    "Folders": "Thư mục"
+  },
+  "pages": {
+    "ForgetPassword": "Quên mật khẩu",
+    "SetPassword": "Đặt lại mật khẩu",
+    "Login": "Đăng nhập",
+    "Dashboard": "Tra cứu dữ liệu",
+    "User": "Người dùng",
+    "User/List": "Danh sách Người dùng",
+    "User/Add": "Tạo mới người dùng {{roleCode}}",
+    "User/Edit": "Chỉnh sửa người dùng {{roleCode}}",
+    "MyProfile": "Thông tin cá nhân",
+    "Setting": "Thiết lập",
+    "Code": "Danh sách danh mục",
+    "Code/Add": "Thêm mới mã {{type}}",
+    "Code/Edit": "Chỉnh sửa mã {{type}}",
+    "Data": "Danh sách dữ liệu",
+    "Data/Add": "Tạo mới dữ liệu {{type}}",
+    "Data/Edit": "Chỉnh sửa dữ liệu {{type}}",
+    "Post": "Danh sách post",
+    "Post/Add": "Tạo mới post {{type}}",
+    "Post/Edit": "Chỉnh sửa post {{type}}",
+    "Parameter": "Danh sách tham số",
+    "Parameter/Edit": "Chỉnh sửa tham số {{type}}",
+    "Navigation": "Điều hướng",
+    "Folders": "Thư mục"
+  },
+  "columns": {
+    "auth": {
+      "login": {
+        "Username": "Tên đăng nhập",
+        "Enter Username": "Nhập tên đăng nhập",
+        "Enter Password": "Nhập mật khẩu",
+        "password": "Mật khẩu",
+        "remember": "Ghi nhớ",
+        "New password": "Mật khẩu mới",
+        "Enter new password": "Nhập mật khẩu mới",
+        "Confirm Password": "Xác nhận mật khẩu",
+        "Send": "Gửi"
+      },
+      "register": {
+        "firstName": "Tên",
+        "lastName": "Họ",
+        "retypedPassword": "Nhập lại mật khẩu"
+      },
+      "reset-password": {
+        "Recovery Email": "Email khôi phục",
+        "Enter Recovery Email": "Nhập Email khôi phục"
+      }
+    }
+  },
+  "layout": {
+    "footer": "Geneat Software Ltd. ©{{year}}"
+  },
+  "routes": {
+    "auth": {
+      "login": {
+        "title": "Đăng nhập",
+        "subTitle": "Nhập thông tin chi tiết của bạn để đăng nhập vào tài khoản",
+        "Log In": "Đăng nhập",
+        "Forgot Password": "Quên mật khẩu?",
+        "Confirm Password": "Xác nhận mật khẩu",
+        "Reset Password": "Xác nhận",
+        "New password": "Mật khẩu mới",
+        "Enter new password": "Nhập mật khẩu mới",
+        "Account": "Chưa có tài khoản? ",
+        "Welcome": "Chào mừng bạn đến với Web React"
+      },
+      "reset-password": {
+        "Recovery Email": "Email khôi phục",
+        "Enter Recovery Email": "Email khôi phục",
+        "title": "Đặt lại mật khẩu",
+        "Submit": "Đổi mật khẩu",
+        "subTitle": "Vui lòng nhập e-mail của bạn. Mã xác minh OTP sẽ được gửi cho bạn",
+        "OTP": "Lấy Mã OTP",
+        "Go back to login": "Quay trở lại đăng nhập",
+        "subEmail": "Vui lòng nhập mã OTP đã gửi đến email của bạn",
+        "Code OTP": "Mã OTP",
+        "Send code": "Gửi mã OTP",
+        "subReset": "Mật khẩu yêu cầu có 8 kí tự trở lên, có ít nhất 1 chữ hoa, 1 chữ thường,",
+        "subReset1": "1 chữ số và 1 kí tự đặc biệt."
+      }
+    },
+    "admin": {
+      "Layout": {
+        "Search": "Tìm kiếm",
+        "English": "Tiếng Anh",
+        "Vietnam": "Tiếng Việt",
+        "Available": "Có sẵn",
+        "Account Setting": "Thiết lập tài khoản",
+        "Sign out": "Đăng xuất",
+        "Mark all as read": "Đánh dấu tất cả là đã đọc",
+        "Setting": "Cài đặt",
+        "Notifications": "Thông báo",
+        "See All": "Xem tất cả",
+        "Add": "Thêm mới",
+        "Edit": "Sửa",
+        "Delete": "Xóa",
+        "My Profile": "Thông tin cá nhân",
+        "No Data": "Trống",
+        "Pagination": "Hiển thị {{from}} - {{to}} /Tổng số {{total}} danh mục",
+        "DayOff": "Hiển thị {{from}} - {{to}} /Tổng số {{total}} yêu cầu",
+        "User": "Hiển thị {{from}} - {{to}} /Tổng số {{total}} người dùng",
+        "Change Password": "Đổi mật khẩu",
+        "Day": "Ngày phép"
+      },
+      "user": {
+        "Role": "Vai trò",
+        "Position": "Vị trí",
+        "Team": "Nhóm",
+        "Start Date": "Ngày đầu đi làm",
+        "Remaining Leave Day": "Ngày phép còn lại",
+        "Date of birth": "Ngày sinh",
+        "Name": "Tên",
+        "Is System Admin": "Là quản trị viên hệ thống",
+        "Permissions": "Cho phép",
+        "Description": "Mô tả",
+        "Upload avatar": "Tải ảnh lên",
+        "Full name": "Họ và tên",
+        "Phone Number": "Số điện thoại",
+        "Action": "Hoạt động",
+        "active": "Kích hoạt"
+      },
+      "Code": {
+        "Type": "Loại mã",
+        "New Type": "Thêm mới loại",
+        "Name": "Tên mã"
+      },
+      "Data": {
+        "Type": "Loại dữ liệu",
+        "Name": "Tên dữ liệu",
+        "Order": "Order",
+        "Image": "Ảnh",
+        "Created At": "Ngày tạo"
+      },
+      "Post": {
+        "Type": "Loại Post",
+        "Name": "Tên Post"
+      },
+      "dashboard": {
+        "Active Profile Report": "Báo cáo hồ sơ đang hoạt động",
+        "Total Profile": "Tổng hồ sơ",
+        "Activated Profile": "Hồ sơ đã kích hoạt",
+        "New Custommers": "Khách hàng mới",
+        "User Purchasing Report": "Báo cáo mua hàng của người dùng",
+        "Free": "Miễn phí",
+        "Silver": "Bạc",
+        "Gold": "Vàng",
+        "Platinum": "Bạch kim",
+        "Seller Profiles": "Hồ sơ người bán",
+        "Buyer Profiles": "Hồ sơ người mua",
+        "Introductions": "Giới thiệu",
+        "Success Deal": "Giao dịch thành công",
+        "Total Payment": "Tổng tiền thanh toán",
+        "Partner Refund": "Hoàn tiền cho đối tác",
+        "Reference User": "Người dùng tham khảo",
+        "Sales Stats": "Thống kê bán hàng",
+        "Sales": "Việc bán hàng",
+        "Share of total": "Chia sẻ trên tổng số",
+        "active profiles": "hồ sơ đang hoạt động",
+        "Total": "Tổng cộng",
+        "active profile in": "hồ sơ hoạt động trong",
+        "Business Profiles Activity": "Hoạt động trên Trang doanh nghiệp",
+        "Franchise Profiles Activity": "Hoạt động hồ sơ nhượng quyền thương mại",
+        "Investor Profiles Activity": "Hoạt động hồ sơ nhà đầu tư",
+        "Monthly Profiles Activity": "Hoạt động hồ sơ hàng tháng",
+        "Profile": "Hồ sơ",
+        "Package": "Gói",
+        "Start Date": "Ngày bắt đầu",
+        "Status": "Trạng thái",
+        "Jan": "Th1",
+        "Feb": "Th2",
+        "Mar": "Th3",
+        "Apr": "Th4",
+        "May": "Th5",
+        "Jun": "Th6",
+        "Jul": "Th7",
+        "Aug": "Th8",
+        "Sep": "Th9",
+        "Oct": "Th10",
+        "Nov": "Th11",
+        "Dev": "Th12"
+      },
+      "navigations": {
+        "navigations": "ĐIỀU HƯỚNG",
+        "infomation": "Thông tin",
+        "parentnavigation": "Điều hướng cha",
+        "navaigationname": "Tên điều hướng",
+        "navigationcode": "Mã điều hướng",
+        "order": "Số thứ tự",
+        "icon": "Biểu tượng",
+        "link": "Link",
+        "assigngroup": "Gán nhóm",
+        "group": "Nhóm",
+        "configurationmenu": "Menu cấu hình",
+        "disabled": "Đã vô hiệu hoá",
+        "selectedgroup": "Nhóm đã chọn",
+        "save": "Lưu lại",
+        "deleteselected": "Xoá phần đã chọn",
+        "roleconfiguration": "Cấu hình quyền",
+        "update": "Cập nhật",
+        "decentralization": "Phân quyền",
+        "shop": "Cửa hàng",
+        "groupuser": "Nhóm người dùng",
+        "user": "Người dùng",
+        "chooseicon": "Chọn biểu tượng",
+        "enteralink": "Nhập link vào đây"
+      }
+    }
+  }
+}

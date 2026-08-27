@@ -1,0 +1,283 @@
+{
+  "components": {
+    "calendar": {
+      "more": "more"
+    },
+    "datatable": {
+      "pleaseEnterValueToSearch": "Search",
+      "reset": "Reset",
+      "search": "Search",
+      "areYouSureWant": "Are you sure want delete?",
+      "areYouSureWantDisable": "Are you sure want disable?",
+      "areYouSureWantEnable": "Are you sure want enable?",
+      "Disabled": "Disabled",
+      "Enabled": "Enabled",
+      "cancel": "Cancel",
+      "ok": "Ok",
+      "No Data": "No Data"
+    },
+    "form": {
+      "ruleRequired": "Please enter {{title}}",
+      "ruleRequiredSelect": "Please choose {{title}}",
+      "ruleEmail": "Please enter a valid email address!",
+      "ruleUsername": "Username contains no special characters, only letters and numbers!",
+      "ruleMinLength": "Please enter at least {{min}} characters!",
+      "ruleMaxLength": "Please enter maximum {{max}} characters!",
+      "ruleMinNumberLength": "Please enter at least {{min}} number characters!",
+      "ruleMaxNumberLength": "Please enter maximum {{max}} number characters!",
+      "ruleMin": "Please enter minimum {{min}} number!",
+      "ruleMax": "Please enter maximum {{max}} number!",
+      "ruleMaxSize": "You can only upload up to {{max}}mb!",
+      "only text": "Please enter only text!",
+      "only number": "Please enter only number",
+      "rulePassword": "Password needs to have at least 8 characters, including at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character",
+      "rulePhone": "Phone number is invalid!",
+      "confirm": "Confirm",
+      "ruleConfirmPassword": "Two passwords that you enter is inconsistent!",
+      "incorrectPathFormat": "Incorrect path format",
+      "Enter": "Enter",
+      "Choose": "Choose",
+      "Upload": "Upload",
+      "modal": {
+        "save": "Save",
+        "cancel": "Cancel"
+      },
+      "Select Date": "Select Date"
+    },
+    "message": {
+      "Success": "Success",
+      "Warning": "Warning",
+      "Fail": "Fail",
+      "Close": "Close",
+      "Ok": "Ok"
+    },
+    "button": {
+      "New": "New",
+      "Save and Add new": "Save and Add new",
+      "Back": "Back"
+    }
+  },
+  "titles": {
+    "Login": "Login",
+    "Dashboard": "Dashboard",
+    "User": "User",
+    "User/List": "List",
+    "User/Add": "Add",
+    "MyProfile": "My Profile",
+    "Setting": "Setting",
+    "Code": "Code",
+    "Data": "Data",
+    "Post": "Post",
+    "Parameter": "Parameter",
+    "Navigation": "Navigation",
+    "Folders": "Folders"
+  },
+  "pages": {
+    "ForgetPassword": "Forgot Password",
+    "SetPassword": "Reset Password",
+    "User/List": "List User",
+    "User/Add": "Add new User {{roleCode}}",
+    "User/Edit": "Edit User {{roleCode}}",
+    "MyProfile": "My Profile",
+    "Login": "Login",
+    "Dashboard": "Dashboard",
+    "User": "User",
+    "Setting": "Setting",
+    "Code": "List Code",
+    "Code/Add": "Add new Code {{type}}",
+    "Code/Edit": "Edit Code {{type}}",
+    "Data": "List Data",
+    "Data/Add": "Add new Data {{type}}",
+    "Data/Edit": "Edit Data {{type}}",
+    "Post": "List Post",
+    "Post/Add": "Add new Post {{type}}",
+    "Post/Edit": "Edit Post {{type}}",
+    "Parameter": "List Parameter",
+    "Parameter/Edit": "Edit Parameter {{type}}",
+    "Navigation": "Navigation",
+    "Folders": "Folders"
+  },
+  "columns": {
+    "auth": {
+      "login": {
+        "Username": "Username",
+        "Enter Username": "Enter Username",
+        "Enter Password": "Enter Password",
+        "password": "Password",
+        "remember": "Remember Me",
+        "New password": "New password",
+        "Enter new password": "Enter new password",
+        "Confirm Password": "Confirm Password",
+        "Send": "Send"
+      },
+      "register": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "retypedPassword": "Retype Password"
+      },
+      "reset-password": {
+        "Recovery Email": "Recovery Email",
+        "Enter Recovery Email": "Enter Recovery Email"
+      }
+    }
+  },
+  "layout": {
+    "footer": "React Company Ltd. ©{{year}}"
+  },
+  "routes": {
+    "auth": {
+      "login": {
+        "title": "Sign In",
+        "subTitle": "Enter your details to login to your account",
+        "Log In": "Log In",
+        "Forgot Password": "Forgot Password",
+        "Confirm Password": "Confirm Password",
+        "Reset password": "Reset Password",
+        "New password": "New password",
+        "Enter new password": "Enter new password",
+        "Account": "Don't have an account?",
+        "Welcome": "Welcome to Web Member Ari"
+      },
+      "reset-password": {
+        "Recovery Email": "Recovery Email",
+        "Enter Recovery Email": "Enter Recovery Email",
+        "title": "Reset Password",
+        "Submit": "Change Password",
+        "subTitle": "Please enter your email. An OTP verification code will be sent to you.",
+        "OTP": "Get OTP",
+        "Go back to login": "Go back to login",
+        "subEmail": "Please enter the OTP code that has been sent to your email.",
+        "Code OTP": "Code OTP",
+        "Send code": "Send code OTP",
+        "subReset": "Password requires 8 characters or more, with at least 1 uppercase letter, 1 lowercase letter,",
+        "subReset1": "1 digit and 1 special character."
+      }
+    },
+    "admin": {
+      "Layout": {
+        "Search": "Search",
+        "English": "English",
+        "Vietnam": "Vietnamese",
+        "Available": "Available",
+        "Account Setting": "Account Setting",
+        "Sign out": "Sign out",
+        "Mark all as read": "Mark all as read",
+        "Setting": "Setting",
+        "Notifications": "Notifications",
+        "See All": "See All",
+        "Add": "Add new",
+        "Edit": "Edit",
+        "Delete": "Delete",
+        "My Profile": "My Profile",
+        "No Data": "No Data",
+        "Pagination": "Show {{from}} - {{to}} /Total {{total}} categories",
+        "User": "Show {{from}} - {{to}} /Total {{total}} user",
+        "Change Password": "Change Password",
+        "Day": "day"
+      },
+      "user": {
+        "Role": "Role",
+        "Position": "Position",
+        "Team": "Team",
+        "Start Date": "Start Date",
+        "Remaining Leave Day": "Remaining Leave Day",
+        "Date of birth": "Date of birth",
+        "Name": "Name",
+        "Is System Admin": "Is System Admin",
+        "Permissions": "Permissions",
+        "Description": "Description",
+        "Upload avatar": "Upload avatar",
+        "Full name": "Full Name",
+        "Phone Number": "Phone Number",
+        "Action": "Action",
+        "Leave date cannot exceed": "Leave date cannot exceed {{day}} days",
+        "active": "Active"
+      },
+      "Code": {
+        "Type": "Type Code",
+        "New Type": "New Type",
+        "Name": "Name Code"
+      },
+      "Data": {
+        "Type": "Type Data",
+        "Name": "Name Data",
+        "Order": "Order",
+        "Image": "Image",
+        "Created At": "Created At"
+      },
+      "Post": {
+        "Type": "Type Post",
+        "Name": "Name"
+      },
+      "dashboard": {
+        "Active Profile Report": "Active Profile Report",
+        "Total Profile": "Total Profile",
+        "Activated Profile": "Activated Profile",
+        "New Custommers": "New Custommers",
+        "User Purchasing Report": "User Purchasing Report",
+        "Free": "Free",
+        "Silver": "Silver",
+        "Gold": "Gold",
+        "Platinum": "Platinum",
+        "Seller Profiles": "Seller Profiles",
+        "Buyer Profiles": "Buyer Profiles",
+        "Introductions": "Introductions",
+        "Success Deal": "GSuccess Deal",
+        "Total Payment": "Total Payment",
+        "Partner Refund": "Partner Refund",
+        "Reference User": "Reference User",
+        "Sales Stats": "Sales Stats",
+        "Sales": "Sales",
+        "Share of total": "Share of total",
+        "active profiles": "active profiles",
+        "Total": "Total",
+        "active profile in": "active profile in",
+        "Business Profiles Activity": "Business Profiles Activity",
+        "Franchise Profiles Activity": "Franchise Profiles Activity",
+        "Investor Profiles Activity": "nvestor Profiles Activityư",
+        "Monthly Profiles Activity": "Monthly Profiles Activity",
+        "Profile": "Profile",
+        "Package": "Package",
+        "Start Date": "Start Date",
+        "Status": "Status",
+        "Jan": "Jan",
+        "Feb": "Feb",
+        "Mar": "Mar",
+        "Apr": "Apr",
+        "May": "May",
+        "Jun": "Jun",
+        "Jul": "Jul",
+        "Aug": "Aug",
+        "Sep": "Sep",
+        "Oct": "Oct",
+        "Nov": "Nov",
+        "Dev": "Dev"
+      },
+      "navigations": {
+        "navigations": "NAVIGATION",
+        "infomation": "Infomation",
+        "parentnavigation": "Parent navigation",
+        "navaigationname": "Navigation name",
+        "navigationcode": "Navigation code",
+        "order": "Order",
+        "icon": "Icon",
+        "link": "Link",
+        "assigngroup": "Assign group",
+        "group": "Group",
+        "selectedgroup": "Selected group",
+        "configurationmenu": "Menu configuration",
+        "disabled": "Disabled",
+        "save": "Save",
+        "deleteselected": "Delete selected",
+        "roleconfiguration": "Role Configuration",
+        "update": "Update",
+        "decentralization": "Decentralization",
+        "shop": "Shop",
+        "groupuser": "Group users",
+        "user": "User",
+        "chooseicon": "Choose icon",
+        "enteralink": "Enter a link"
+      }
+    }
+  }
+}
