@@ -381,8 +381,10 @@ export const DonHangDetailDrawer = () => {
           <p>{donHangFacade.data?.phuongTien?.congTy ?? '-'}</p>
         </div>
         <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 odd:*:text-right even:*:font-semibold text-left">
-          <p>Ngày tạo:</p>
-          <p>{dayjs(donHangFacade.data?.createdOnDate).format(dateFormat)}</p>
+          <p>Ngày đặt hàng:</p>
+          <p>
+            {donHangFacade.data?.ngayDatHang ? dayjs(donHangFacade.data?.ngayDatHang).format(dateFormat) : '-'}
+          </p>
           <p>Người tạo:</p>
           <p>{donHangFacade.data?.createdByUserFullName ?? donHangFacade.data?.createdByUserName}</p>
           <p>Thời gian yêu cầu giao hàng:</p>

@@ -61,7 +61,7 @@ import { unwrapResult } from '@reduxjs/toolkit';
 interface DataType extends DonHang {
   key: string;
   index: number;
-  createdOnDateFormated: string;
+  ngayDatHangFormated: string;
   thoiHanGiaoHangFormated: string;
 }
 
@@ -174,7 +174,7 @@ const DonHangScreen = () => {
         ...item,
         key: uuidv4(),
         index: (donHangFacade.pagination?.size ?? 0) * ((donHangFacade.pagination?.page ?? 1) - 1) + index + 1,
-        createdOnDateFormated: item.createdOnDate ? dayjs(item.createdOnDate).format(dateFormat) : '-',
+        ngayDatHangFormated: item.ngayDatHang ? dayjs(item.ngayDatHang).format(dateFormat) : '-',
         thoiHanGiaoHangFormated: item.thoiHanGiaoHang ? dayjs(item.thoiHanGiaoHang).format(dateFormat) : '-',
       })) ?? [],
     [donHangFacade.pagination],
@@ -459,9 +459,9 @@ const DonHangScreen = () => {
       ),
     },
     {
-      title: 'Ngày tạo',
-      dataIndex: 'createdOnDateFormated',
-      key: 'createdOnDateFormated',
+      title: 'Ngày đặt hàng',
+      dataIndex: 'ngayDatHangFormated',
+      key: 'ngayDatHangFormated',
       sorter: true,
       width: 135,
       onCell: (record, _rowIndex) => ({
