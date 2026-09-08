@@ -23,7 +23,8 @@ export const routerLinks = (name: string, type?: string) => {
     DonHang: '/don-hang',
     RightMapRole: '/phan-quyen',
     TonKho: '/ton-kho',
-    BaoCaoXuatNhap: '/bao-cao-xuat-nhap'
+    BaoCaoXuatNhap: '/bao-cao-xuat-nhap',
+        BaoCao: '/bao-cao'
   }; // 💬 generate link to here
   const apis: {
     [selector: string]: string;
@@ -55,7 +56,8 @@ export const routerLinks = (name: string, type?: string) => {
     WarehouseTransaction: '/warehouse-transaction',
     Notification: '/notification',
     TransactionReport: '/transaction-report',
-    Dashboard: '/dashboard-visualize'
+    Dashboard: '/dashboard-visualize',
+        BaoCao: '/bao-cao'
   }; // 💬 generate api to here
   switch (type) {
     case 'api':
