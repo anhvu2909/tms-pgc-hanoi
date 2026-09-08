@@ -119,6 +119,10 @@ const pages = [
         path: routerLinks('BaoCaoXuatNhap'),
         component: React.lazy(() => import('@pages/bao-cao-xuat-nhap')),
       },
+      {
+                path: routerLinks('BaoCao'),
+                component: React.lazy(() => import('@pages/bao-cao')),
+      },
     ], // 💬 generate link to here
   },
 ];
