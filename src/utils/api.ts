@@ -848,6 +848,22 @@ async function laiXeDeleteMany<T>(ids: string[]): Promise<Responses<T>> {
   return ok(toCamelDeep(data) as T, data?.Message);
 }
 
+  // ---------------------------------------------------------------------
+  // 4i) Bao cao (sql/09_bao_cao.sql) - moi bao cao goi 1 RPC rieng, tham so
+  //     tuNgay/denNgay (chuoi 'YYYY-MM-DD', loc theo ThoiHanGiaoHang). Khong
+  //     phan trang - tra ve toan bo du lieu trong khoang ngay de trang Bao cao
+  //     xuat thang ra Excel bang SheetJS.
+  // ---------------------------------------------------------------------
+  const BAO_CAO_BASE = routerLinks('BaoCao', 'api'); // '/bao-cao'
+
+  async function baoCaoRun<T>(rpcFn: string, params: any): Promise<Responses<T>> {
+        const data = await callRpc<any[]>(rpcFn, {
+                p_tu_ngay: params.tuNgay,
+                p_den_ngay: params.denNgay,
+        });
+        return ok((data ?? []) as T);
+  }
+
 // -------------------------------------------------------------------------------------
 // 5) API cũ (fetch tới backend .NET) — GIỮ NGUYÊN cho các endpoint chưa chuyển đổi
 // -------------------------------------------------------------------------------------
@@ -902,7 +918,10 @@ export const API = {
   // GET
   // -----------------------------------------------------------------------------------
   get: async <T>(url: string, params: any = {}, headers?: RequestInit['headers'], throwText: boolean = false) => {
-    if (url === DON_HANG_BASE) return donHangList<T>(params);
+if (url === `${BAO_CAO_BASE}/van-tai-b11-cn-bac-ninh`) return baoCaoRun<T>('sm_baocao_van_tai_b11_cn_bac_ninh', params);
+        if (url === `${BAO_CAO_BASE}/chi-tiet-don-hang`) return baoCaoRun<T>('sm_baocao_chi_tiet_don_hang', params);
+        if (url === `${BAO_CAO_BASE}/in-lenh-van-chuyen`) return baoCaoRun<T>('sm_baocao_in_lenh_van_chuyen', params);
+        if (url === DON_HANG_BASE) return donHangList<T>(params);
     if (url === `${DON_HANG_BASE}/count-by-status`) return donHangCountByStatus<T>(params);
     const detailMatch = url.match(new RegExp(`^${DON_HANG_BASE}/(${UUID_RE})$`));
     if (detailMatch) return donHangDetail<T>(detailMatch[1]);
