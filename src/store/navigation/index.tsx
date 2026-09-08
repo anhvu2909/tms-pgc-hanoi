@@ -89,6 +89,7 @@ const STATIC_MENU: Navigation[] = [
   { id: 'qly-xe', name: 'Phương tiện', urlRewrite: '/qly-xe', iconClass: '', type: 1, subChild: [] } as unknown as Navigation,
   { id: 'kho', name: 'Kho', urlRewrite: '/kho', iconClass: '', type: 1, subChild: [] } as unknown as Navigation,
   { id: 'chi-phi-van-chuyen', name: 'Cước vận chuyển', urlRewrite: '/chi-phi-van-chuyen', iconClass: '', type: 1, subChild: [] } as unknown as Navigation,
+  { id: 'bao-cao', name: 'Báo cáo', urlRewrite: '/bao-cao', iconClass: '', type: 1, subChild: [] } as unknown as Navigation,
 ];
 
 export const navigationSlice = createSlice(
