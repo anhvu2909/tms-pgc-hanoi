@@ -328,40 +328,34 @@ const DonHangScreen = () => {
       });
   };
 
-  const getDefaultDateRange = (): [dayjs.Dayjs | null | undefined, dayjs.Dayjs | null | undefined] => {
-    const filterObj = JSON.parse(filter || '{}');
-    if (filterObj) {
-      const { createDateRange, ...value } = filterObj;
+  const getDefaultDateRange = (
+        filterKey: string,
+      ): [dayjs.Dayjs | null | undefined, dayjs.Dayjs | null | undefined] => {
+            const filterObj = JSON.parse(filter || '{}');
+            const range = filterObj?.[filterKey];
+            if (range && range[0] && range[1]) {
+                    return [dayjs(range[0]), dayjs(range[1])];
+            }
+            return [undefined, undefined];
+      };
 
-      if (createDateRange) {
-        const defaultStartDate = createDateRange[0] ?? null; // Start of the current month
-        const defaultEndDate = createDateRange[0] ?? null; // End of the current month
-        return [defaultStartDate, defaultEndDate];
-      }
-    }
-    return [undefined, undefined];
-  };
-
-  const handleReset = (clearFilters: () => void, dataIndex: string, confirm: FilterDropdownProps['confirm']) => {
-    clearFilters();
-    setSearchParams(
-      (prev) => {
-        if (prev.has('createdDateRange')) {
-          prev.delete('createdDateRange');
-        }
-        return prev;
-      },
-      { replace: true },
-    );
-    getDefaultDateRange();
-    query = { ...query, filter: JSON.stringify({ createdDateRange: undefined }) };
-    confirm();
-    searchText.current = '';
-    form.setFieldValue('createdDateRange', [undefined, undefined]);
-    onChangeDataTable({ query: query });
-  };
+  const handleReset = (
+        clearFilters: () => void,
+        dataIndex: string,
+        filterKey: string,
+        confirm: FilterDropdownProps['confirm'],
+      ) => {
+            clearFilters();
+            const filterObj = JSON.parse(filter || '{}');
+            filterObj[filterKey] = undefined;
+            query = donHangFacade.query;
+            query = { ...query, filter: JSON.stringify(filterObj), page: 1 };
+            confirm();
+            form.setFieldValue(filterKey, [undefined, undefined]);
+            onChangeDataTable({ query: query });
+      };
   const handleSearch = (_selectedKeys: string[], _confirm: FilterDropdownProps['confirm'], _dataIndex: DataIndex) => {
-    onChangeDataTable({ query: query });
+        onChangeDataTable({ query: query });
   };
 
   const getColumnFilterProps = (dataIndex: DataIndex, filterKey: string): TableColumnType<DataType> => ({
@@ -373,7 +367,7 @@ const DonHangScreen = () => {
               <DatePicker.RangePicker
                 format={'YYYY-MM-DD'}
                 allowClear
-                defaultValue={getDefaultDateRange()}
+                defaultValue={getDefaultDateRange(filterKey)}
                 onChange={(value, dateString) => {
                   query = donHangFacade.query;
                   const filterObj = JSON.parse(filter || '{}');
@@ -389,7 +383,7 @@ const DonHangScreen = () => {
             </Form.Item>
             <Space>
               <Button
-                onClick={() => clearFilters && handleReset(clearFilters, dataIndex, confirm)}
+                onClick={() => clearFilters && handleReset(clearFilters, dataIndex, filterKey, confirm)}
                 style={{ width: 90 }}
               >
                 Cài lại
