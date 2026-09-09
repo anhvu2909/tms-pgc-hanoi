@@ -856,10 +856,26 @@ async function laiXeDeleteMany<T>(ids: string[]): Promise<Responses<T>> {
   // ---------------------------------------------------------------------
   const BAO_CAO_BASE = routerLinks('BaoCao', 'api'); // '/bao-cao'
 
-  async function baoCaoRun<T>(rpcFn: string, params: any): Promise<Responses<T>> {
-        const data = await callRpc<any[]>(rpcFn, {
+  async function baoCaoDanhMucList<T>(): Promise<Responses<T>> {
+        const data = await callRpc<any[]>('sm_baocao_danhmuc_list', {});
+        return ok(toCamelDeep(data ?? []) as T);
+  }
+
+  async function baoCaoFilterOptionsList<T>(): Promise<Responses<T>> {
+        const data = await callRpc<any>('sm_baocao_filter_options', {});
+        return ok((data ?? {}) as T);
+  }
+
+  async function baoCaoRunGeneric<T>(params: any): Promise<Responses<T>> {
+        const data = await callRpc<any[]>('sm_baocao_run', {
+                p_ma: params.ma,
                 p_tu_ngay: params.tuNgay,
                 p_den_ngay: params.denNgay,
+                p_nguoi_tao_ids: params.nguoiTaoIds ?? null,
+                p_kho_den_ids: params.khoDenIds ?? null,
+                p_tai_xe_ids: params.taiXeIds ?? null,
+                p_phuong_tien_ids: params.phuongTienIds ?? null,
+                p_don_vi_van_chuyen: params.donViVanChuyen ?? null,
         });
         return ok((data ?? []) as T);
   }
@@ -918,9 +934,9 @@ export const API = {
   // GET
   // -----------------------------------------------------------------------------------
   get: async <T>(url: string, params: any = {}, headers?: RequestInit['headers'], throwText: boolean = false) => {
-if (url === `${BAO_CAO_BASE}/van-tai-b11-cn-bac-ninh`) return baoCaoRun<T>('sm_baocao_van_tai_b11_cn_bac_ninh', params);
-        if (url === `${BAO_CAO_BASE}/chi-tiet-don-hang`) return baoCaoRun<T>('sm_baocao_chi_tiet_don_hang', params);
-        if (url === `${BAO_CAO_BASE}/in-lenh-van-chuyen`) return baoCaoRun<T>('sm_baocao_in_lenh_van_chuyen', params);
+if (url === `${BAO_CAO_BASE}/danh-muc`) return baoCaoDanhMucList<T>();
+        if (url === `${BAO_CAO_BASE}/filter-options`) return baoCaoFilterOptionsList<T>();
+        if (url === `${BAO_CAO_BASE}/run`) return baoCaoRunGeneric<T>(params);
         if (url === DON_HANG_BASE) return donHangList<T>(params);
     if (url === `${DON_HANG_BASE}/count-by-status`) return donHangCountByStatus<T>(params);
     const detailMatch = url.match(new RegExp(`^${DON_HANG_BASE}/(${UUID_RE})$`));
