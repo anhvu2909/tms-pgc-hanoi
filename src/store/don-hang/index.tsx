@@ -303,13 +303,16 @@ export class DonHang extends CommonEntity {
   }
 }
 
-export type T_DonHangFilterFields = {
+  export type T_DonHangFilterFields = {
   fullTextSearch?: string;
   TrangThai?: string;
   CreatedByUserId?: string;
   MucDoUuTien?: string;
   KhoGiao?: string;
   KhoNhan?: string;
+      LaiXeId?: string;
+      PhuongTienId?: string;
+      DoiTuong?: string;
 };
 
 export enum EStatusDonHang {
