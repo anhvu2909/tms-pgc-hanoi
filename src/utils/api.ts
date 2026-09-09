@@ -426,6 +426,8 @@ async function donHangList<T>(params: any): Promise<Responses<T>> {
             LaiXeId: filterGet(filter, 'LaiXeId') ?? null,
             PhuongTienId: filterGet(filter, 'PhuongTienId') ?? null,
             DoiTuong: filterGet(filter, 'DoiTuong') ?? null,
+            createdDateRange: filterGet(filter, 'createdDateRange') ?? null,
+            thoiHanDateRange: filterGet(filter, 'thoiHanDateRange') ?? null,
     },
     p_sort: params?.sort || '-CreatedOnDate',
   });
