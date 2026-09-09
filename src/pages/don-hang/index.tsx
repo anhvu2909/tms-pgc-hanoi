@@ -1,4 +1,5 @@
 import {
+  API,
   dateFormat,
   lang,
   renderTitleBreadcrumbs,
@@ -205,6 +206,27 @@ const DonHangScreen = () => {
       });
     };
   }, []);
+
+    // Droplist Tai xe/Phuong tien/Doi tuong - dung chung RPC sm_baocao_filter_options
+      // (da co san cho man Bao cao) de khong viet trung 1 truy van khac cho cung du
+        // lieu (sm_LaiXe.TenTaiXe, sm_PhuongTien.BienSoXe, sm_Kho.GhiChu).
+          const [taiXePhuongTienDoiTuongOptions, setTaiXePhuongTienDoiTuongOptions] = useState<{
+              taiXe: { id: string; ten: string }[];
+                  phuongTien: { id: string; ten: string }[];
+                      doiTuong: string[];
+                        }>({ taiXe: [], phuongTien: [], doiTuong: [] });
+
+                          useEffect(() => {
+                              API.get<{
+                                    taiXe: { id: string; ten: string }[];
+                                          phuongTien: { id: string; ten: string }[];
+                                                doiTuong: string[];
+                                                    }>(`${routerLinks('BaoCao', 'api')}/filter-options`)
+                                                          .then((res) => {
+                                                                  if (res.data) setTaiXePhuongTienDoiTuongOptions(res.data);
+                                                                        })
+                                                                              .catch(() => {});
+                                                                                }, []);
 
   useEffect(() => {
     switch (donHangFacade.status) {
@@ -661,6 +683,15 @@ const DonHangScreen = () => {
         case 'MucDoUuTien':
           currentFilter.MucDoUuTien = value;
           break;
+                  case 'LaiXeId':
+                            currentFilter.LaiXeId = value;
+                                      break;
+                                              case 'PhuongTienId':
+                                                        currentFilter.PhuongTienId = value;
+                                                                  break;
+                                                                          case 'DoiTuong':
+                                                                                    currentFilter.DoiTuong = value;
+                                                                                              break;
       }
       const query: QueryParams = {
         page: 1,
@@ -691,6 +722,27 @@ const DonHangScreen = () => {
             },
           });
           break;
+                  case 'LaiXeId':
+                            onChangeDataTable({
+                                        query: {
+                                                      filter: JSON.stringify({ LaiXeId: value }),
+                                                                  },
+                                                                            });
+                                                                                      break;
+                                                                                              case 'PhuongTienId':
+                                                                                                        onChangeDataTable({
+                                                                                                                    query: {
+                                                                                                                                  filter: JSON.stringify({ PhuongTienId: value }),
+                                                                                                                                              },
+                                                                                                                                                        });
+                                                                                                                                                                  break;
+                                                                                                                                                                          case 'DoiTuong':
+                                                                                                                                                                                    onChangeDataTable({
+                                                                                                                                                                                                query: {
+                                                                                                                                                                                                              filter: JSON.stringify({ DoiTuong: value }),
+                                                                                                                                                                                                                          },
+                                                                                                                                                                                                                                    });
+                                                                                                                                                                                                                                              break;
       }
     }
   };
@@ -801,6 +853,48 @@ const DonHangScreen = () => {
       ) : (
         ''
       )}
+
+            <Select
+                    showSearch
+                            allowClear
+                                    className={`max-w-full min-w-40`}
+                                            mode={'tags'}
+                                                    placeholder={'Loc theo tai xe'}
+                                                            optionFilterProp={'label'}
+                                                                    options={taiXePhuongTienDoiTuongOptions.taiXe.map((item) => ({
+                                                                              label: item.ten,
+                                                                                        value: item.id,
+                                                                                                }))}
+                                                                                                        onChange={(value: string) => handleChangeSelect(value, 'LaiXeId')}
+                                                                                                              />
+                                                                                                              
+                                                                                                                    <Select
+                                                                                                                            showSearch
+                                                                                                                                    allowClear
+                                                                                                                                            className={`max-w-full min-w-40`}
+                                                                                                                                                    mode={'tags'}
+                                                                                                                                                            placeholder={'Loc theo phuong tien'}
+                                                                                                                                                                    optionFilterProp={'label'}
+                                                                                                                                                                            options={taiXePhuongTienDoiTuongOptions.phuongTien.map((item) => ({
+                                                                                                                                                                                      label: item.ten,
+                                                                                                                                                                                                value: item.id,
+                                                                                                                                                                                                        }))}
+                                                                                                                                                                                                                onChange={(value: string) => handleChangeSelect(value, 'PhuongTienId')}
+                                                                                                                                                                                                                      />
+                                                                                                                                                                                                                      
+                                                                                                                                                                                                                            <Select
+                                                                                                                                                                                                                                    showSearch
+                                                                                                                                                                                                                                            allowClear
+                                                                                                                                                                                                                                                    className={`max-w-full min-w-40`}
+                                                                                                                                                                                                                                                            mode={'tags'}
+                                                                                                                                                                                                                                                                    placeholder={'Loc theo doi tuong'}
+                                                                                                                                                                                                                                                                            optionFilterProp={'label'}
+                                                                                                                                                                                                                                                                                    options={taiXePhuongTienDoiTuongOptions.doiTuong.map((item) => ({
+                                                                                                                                                                                                                                                                                              label: item,
+                                                                                                                                                                                                                                                                                                        value: item,
+                                                                                                                                                                                                                                                                                                                }))}
+                                                                                                                                                                                                                                                                                                                        onChange={(value: string) => handleChangeSelect(value, 'DoiTuong')}
+                                                                                                                                                                                                                                                                                                                              />
 
       <Select
         disabled={tabKey !== 'ALL'}
