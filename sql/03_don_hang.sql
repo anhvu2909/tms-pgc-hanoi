@@ -15,12 +15,13 @@
 --   - Biên bản giao nhận (Delivery Note), ký tên, ảnh, xuất PDF biên bản
 --   - Trạng thái trung gian cũ (chỉ hiển thị dữ liệu lịch sử, không tạo mới)
 --   - Tính năng "Phân xe - xế" gán tài xế/xe hàng loạt độc lập trạng thái
---     (giờ chỉ gán được qua màn "Chỉnh sửa", khi đơn ở trạng thái NHAP)
+--     (giờ chỉ gán được qua màn "Chỉnh sửa", khi đơn ở trạng thái NHAP hoặc CHO_DUYET)
 -- Theo đúng luồng 5 trạng thái đã chốt ở skill tu-dien-nghiep-vu-tms mục 4.
 --
 -- GIẢ ĐỊNH CHƯA XÁC NHẬN (cần Bạn xác nhận khi test, xem ghi chú tại chỗ):
 --   1) Mã đơn hàng = 'DH-' || YYYYMMDDHH24MISS (suy từ mẫu 'DH-20260717032841').
---   2) Chỉ được SỬA đơn khi đang ở trạng thái NHAP (chưa gửi duyệt).
+--   2) Được SỬA đơn khi đang ở trạng thái NHAP hoặc CHO_DUYET (theo yêu cầu
+--      người dùng — ban đầu chỉ cho sửa ở Nháp, sau đó mở rộng thêm Chờ duyệt).
 --   3) Chỉ được XÓA (xóa hẳn) đơn khi đang ở trạng thái NHAP.
 --   4) Gán tài xế/xe không sinh dòng lịch sử làm thay đổi TrangThai, và khi
 --      hoàn tác, các dòng lịch sử "PhanXeXe" luôn bị bỏ qua khi tìm trạng thái
@@ -106,7 +107,8 @@ $$;
 
 -- Danh sách hành động được phép theo trạng thái hiện tại (luồng 5 trạng thái rút gọn).
 -- KHÔNG còn 'ASSIGN_DELIVERY' — tính năng "Phân xe - xế" hàng loạt đã bị gỡ bỏ theo
--- yêu cầu, giờ chỉ gán tài xế/xe qua màn "Chỉnh sửa" (chỉ khi đơn ở NHAP).
+-- yêu cầu, giờ chỉ gán tài xế/xe qua màn "Chỉnh sửa" (ở NHAP hoặc CHO_DUYET — theo
+-- yêu cầu người dùng: đơn đang chờ duyệt vẫn cho sửa được, không chỉ riêng bản nháp).
 create or replace function public.sm_fn_donhang_allowed_actions(p_trang_thai text)
 returns text[]
 language sql
@@ -114,7 +116,7 @@ immutable
 as $$
   select case p_trang_thai
     when 'NHAP'       then array['UPDATE','DELETE','SEND_APPROVAL','CANCEL']
-    when 'CHO_DUYET'  then array['APPROVE','REJECT','CANCEL']
+    when 'CHO_DUYET'  then array['UPDATE','APPROVE','REJECT','CANCEL']
     when 'DA_DUYET'   then array['COMPLETE','CANCEL']
     when 'HOAN_THANH' then array[]::text[]   -- muốn hủy phải Hoàn tác về DA_DUYET trước
     else array[]::text[]                     -- DA_HUY và mọi trạng thái cũ: chỉ Hoàn tác (xử lý riêng ở FE)
@@ -398,7 +400,8 @@ $$;
 
 -- ---------------------------------------------------------------------
 -- 5. Sửa đơn hàng — public.sm_donhang_update(p_id, p_order, p_lines)
---    CHỈ cho sửa khi TrangThai = 'NHAP' (giả định #2 ở đầu file)
+--    Cho sửa khi TrangThai = 'NHAP' hoặc 'CHO_DUYET' — theo yêu cầu người dùng
+--    (ban đầu chỉ cho sửa ở Nháp, sau đó mở rộng cho phép sửa cả khi đang chờ duyệt).
 -- ---------------------------------------------------------------------
 create or replace function public.sm_donhang_update(p_id uuid, p_order jsonb, p_lines jsonb)
 returns jsonb
@@ -422,8 +425,8 @@ declare
 begin
   select "TrangThai" into v_trang_thai from public."sm_DonHang" where "Id" = p_id;
   if not found then raise exception 'Không tìm thấy đơn hàng'; end if;
-  if v_trang_thai <> 'NHAP' then
-    raise exception 'Chỉ có thể sửa đơn hàng khi đang ở trạng thái Nháp';
+  if v_trang_thai not in ('NHAP', 'CHO_DUYET') then
+    raise exception 'Chỉ có thể sửa đơn hàng khi đang ở trạng thái Nháp hoặc Chờ duyệt';
   end if;
 
   if v_ben_giao_id is null then raise exception 'Vui lòng chọn Bên giao'; end if;

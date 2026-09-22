@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router';
 import { DonHangFacade } from 'src/store/don-hang';
 import dayjs from 'dayjs';
 import { LichSuChinhSuaFacade } from 'src/store/lich-su-chinh-sua';
+import { RightMapRoleFacade } from 'src/store/right-map-role';
 
 const DonHangDetail = () => {
   const { id } = useParams();
@@ -13,9 +14,11 @@ const DonHangDetail = () => {
   const param = JSON.parse(donHangFacade.queryParams || `{}`);
   const navigate = useNavigate();
   const lichSuChinhSuaFacade = LichSuChinhSuaFacade();
+  const rightMapRoleFacade = RightMapRoleFacade();
 
   useEffect(() => {
     lichSuChinhSuaFacade.get({ size: -1, filter: JSON.stringify({ entityId: id, entityType: 'DonHang' }) });
+    rightMapRoleFacade.getRightMapByCode('DONHANG');
   }, []);
 
   const sanPhamDataSource =
@@ -105,7 +108,10 @@ const DonHangDetail = () => {
             <div className="flex justify-between">
               <h1 className="font-bold text-lg pb-2">Thông tin đơn hàng</h1>
               <Button
-                hidden={donHangFacade.data?.trangThai === 'DA_DUYET'}
+                hidden={
+                  !donHangFacade.data?.allowedActions?.includes('UPDATE') ||
+                  !rightMapRoleFacade.rightDatas?.find((x) => x.groupCode == 'DONHANG')?.isUpdateAllowed
+                }
                 type={'primary'}
                 onClick={() => {
                   navigate(`/${lang}${routerLinks('DonHang')}/${donHangFacade.data?.id}/edit`);
