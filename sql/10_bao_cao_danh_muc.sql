@@ -17,11 +17,15 @@
 --
 -- Thay đổi trong file này (báo cáo "Dữ liệu in lệnh vận chuyển" —
 -- Ma = 'in-lenh-van-chuyen'):
---   1) Format "ThoiHanGiaoHang" và "CreatedOnDate" thành dd/mm/yyyy
+--   1) Format "ThoiHanGiaoHang" và "NgayDatHang" thành dd/mm/yyyy
 --      (to_char(..., 'DD/MM/YYYY')) thay vì trả timestamp thô.
 --   2) Thêm cột cuối cùng "thong_tin" = LaiXe - PhuongTien -
 --      CongTyVanTai (dùng concat_ws để không bị lỗi khi 1 trong 3 giá
 --      trị là NULL).
+--   3) Đổi cột "CreatedOnDate" (ngày hệ thống tạo bản ghi) thành
+--      "NgayDatHang" (cột riêng trong sm_DonHang, đúng nghĩa "ngày đặt
+--      hàng" — xem mục 1 skill tu-dien-nghiep-vu-tms), cũng format
+--      dd/mm/yyyy.
 -- Và tắt báo cáo "Dữ liệu vận tải b11 CN Bắc Ninh" (Ma =
 -- 'van-tai-b11-cn-bac-ninh') khỏi danh sách chọn báo cáo bằng cách đặt
 -- "Active" = false — KHÔNG xóa dòng, để có thể bật lại nếu cần, dữ liệu
@@ -54,7 +58,7 @@ set "SqlQuery" = $sqlquery$
       d."DiaChiBenGiao",
       d."DiaChiBenNhan",
       sp."MaSanPham",
-      to_char(d."CreatedOnDate", 'DD/MM/YYYY') as "CreatedOnDate",
+      to_char(d."NgayDatHang", 'DD/MM/YYYY') as "NgayDatHang",
       pt."CongTy" as "CongTyVanTai",
       concat_ws(' - ', lx."TenTaiXe", pt."BienSoXe", pt."CongTy") as "thong_tin"
     from public."sm_SanPham_DonHang" sp
