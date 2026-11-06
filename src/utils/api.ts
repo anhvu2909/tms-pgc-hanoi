@@ -881,6 +881,7 @@ async function laiXeDeleteMany<T>(ids: string[]): Promise<Responses<T>> {
                 p_tai_xe_ids: params.taiXeIds ?? null,
                 p_phuong_tien_ids: params.phuongTienIds ?? null,
                 p_don_vi_van_chuyen: params.donViVanChuyen ?? null,
+                p_doi_tuong: params.doiTuong ?? null,
         });
         return ok((data ?? []) as T);
   }
