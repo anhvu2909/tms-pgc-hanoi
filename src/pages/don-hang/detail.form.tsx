@@ -25,6 +25,7 @@ import { DonHangFacade, EStatusDonHang, KhachHangFacade } from '@store';
 import { RightMapRoleFacade } from 'src/store/right-map-role';
 import { useSearchParams } from 'react-router-dom';
 import { UndoOutlined } from '@ant-design/icons';
+import { printLenhVanChuyen } from './print-lenh-van-chuyen';
 
 // Không thể hoàn tác hành động "TaoMoi" (không còn trạng thái nào trước đó để về) —
 // mọi trạng thái khác, kể cả DA_HUY và HOAN_THANH, đều hoàn tác được (chốt ở skill
@@ -345,18 +346,21 @@ export const DonHangDetailDrawer = () => {
       </Modal>
       <div className="flex justify-between mb-2">
         <h1 className="font-bold text-lg pt-1">Thông tin đơn hàng</h1>
-        <Button
-          hidden={
-            !donHangFacade.data?.allowedActions?.includes('UPDATE') ||
-            !rightMapRoleFacade.rightDatas?.find((x) => x.groupCode == 'DONHANG')?.isUpdateAllowed
-          }
-          type={'primary'}
-          onClick={() => {
-            navigate(`/${lang}${routerLinks('DonHang')}/${donHangFacade.data?.id}/edit`);
-          }}
-        >
-          Chỉnh sửa
-        </Button>
+        <Space>
+          <Button onClick={() => printLenhVanChuyen(donHangFacade.data)}>In lệnh vận chuyển</Button>
+          <Button
+            hidden={
+              !donHangFacade.data?.allowedActions?.includes('UPDATE') ||
+              !rightMapRoleFacade.rightDatas?.find((x) => x.groupCode == 'DONHANG')?.isUpdateAllowed
+            }
+            type={'primary'}
+            onClick={() => {
+              navigate(`/${lang}${routerLinks('DonHang')}/${donHangFacade.data?.id}/edit`);
+            }}
+          >
+            Chỉnh sửa
+          </Button>
+        </Space>
       </div>
       <hr className="h-1 border-1 pt-2" />
       <div className="grid grid-cols-2 mt-2 gap-10">
