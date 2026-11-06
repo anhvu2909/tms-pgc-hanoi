@@ -288,6 +288,7 @@ export class DonHang extends CommonEntity {
     public laiXe?: LaiXeModel,
     public laiXeId?: string,
     public phuongTienId?: string,
+    public khoangCach?: number,
     public sanPham?: {
       id?: string;
       sanPhamId?: string;

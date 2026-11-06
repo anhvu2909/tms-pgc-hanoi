@@ -463,7 +463,21 @@ async function donHangDetail<T>(id: string): Promise<Responses<T>> {
     QuyDoi: Number(sp.SoLuong) * Number(sp.TrongLuong),
   }));
 
-  return ok(toCamelDeep({ ...data, SanPham: sanPham }) as T);
+  // Khoang cach (KhoangCach) phuc vu man hinh "In lenh van chuyen" - khong co san trong
+  // sm_donhang_detail nen tra truc tiep tu bieu cuoc theo dung cap Ben giao/Dia chi ben nhan
+  // da dung de tinh CuocVanChuyen luc tao don.
+  let khoangCach: number | null = null;
+  if (data?.BenGiaoId && data?.DiaChiBenNhanId) {
+    const { data: cp } = await supabase
+      .from('sm_ChiPhiVanChuyen')
+      .select('KhoangCach')
+      .eq('KhoDiId', data.BenGiaoId)
+      .eq('KhoNhanId', data.DiaChiBenNhanId)
+      .maybeSingle();
+    khoangCach = cp?.KhoangCach ?? null;
+  }
+
+  return ok(toCamelDeep({ ...data, SanPham: sanPham, KhoangCach: khoangCach }) as T);
 }
 
 // value gửi lên từ Form (camelCase, có field "sanPham" là mảng dòng sản phẩm) -> tách
